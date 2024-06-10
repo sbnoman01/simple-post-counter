@@ -22,7 +22,7 @@ if ( ! class_exists( 'Simple_Post_Counter' ) ) {
   final class Simple_Post_Counter {
 
     //properties
-    public $prefix = 'simple_post_counter_';
+    public $prefix = 'simple_post_counter';
 
     /**
 		 * Disable object cloning.
@@ -72,13 +72,13 @@ if ( ! class_exists( 'Simple_Post_Counter' ) ) {
 
       new \Simple_Post_Counter\Includes\Settings(
         [
-          'prefix' => $this->prefix
+          'prefix' => str_replace('_', '-', $this->prefix)
         ]
       );
 
       new \Simple_Post_Counter\Includes\Settings_Api(
         [
-          'prefix' => $this->prefix
+          'prefix' => str_replace('_', '-', $this->prefix)
         ]
       );
 

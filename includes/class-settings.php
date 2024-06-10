@@ -26,7 +26,7 @@ class Settings {
     public function page_settings( $pages ){
 
         // default page
-		$pages[ $this->args['prefix'] . 'pages' ] = [
+		$pages[ $this->args['prefix'] ] = [
 			'menu_slug'		=> 'simple-post-counter',
 			'page_title'	=> __( 'Simple PostViews Counter Settings', 'simple-post-counter' ),
 			'menu_title'	=> __( 'Simple Counter', 'simple-post-counter' ),
@@ -52,9 +52,9 @@ class Settings {
 			]
 		];
 
-        $pages[ $this->args['prefix'] . 'pages' ]['type'] = 'page';
-        $pages[ $this->args['prefix'] . 'pages' ]['icon'] = 'dashicons-chart-bar';
-        $pages [$this->args['prefix'] . 'pages' ]['position'] = '10';
+        $pages[ $this->args['prefix'] ]['type'] = 'page';
+        $pages[ $this->args['prefix'] ]['icon'] = 'dashicons-chart-bar';
+        $pages [$this->args['prefix'] ]['position'] = '10';
 
         return $pages;
     }
