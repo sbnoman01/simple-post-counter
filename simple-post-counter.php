@@ -89,3 +89,46 @@ if ( ! class_exists( 'Simple_Post_Counter' ) ) {
   
 
 } new Simple_Post_Counter();
+
+
+function debug( $arr ){
+  echo '<pre>';
+
+  print_r($arr);
+  
+  echo '</pre>';
+}
+
+add_action('admin_init', 'register_simple_post_counter_settings', 999);
+
+function register_simple_post_counter_settings() {
+    // Register a settings group
+    register_setting('simple_post_counter_options_group', 'simple_post_counter_options');
+
+    // Add a section
+    add_settings_section(
+        'simple_post_counter_section',
+        'Simple Post Counter Settings',
+        'simple_post_counter_section_callback',
+        'simple-post-counter'
+    );
+
+    // Add a field
+    add_settings_field(
+        'post_counter_text',
+        'Text Field Example',
+        'post_counter_text_callback',
+        'simple-post-counter',
+        'simple_post_counter_section'
+    );
+}
+
+function simple_post_counter_section_callback() {
+    echo '<p>Configure options for Simple Post Counter.</p>';
+}
+
+function post_counter_text_callback() {
+    $options = get_option('simple_post_counter_options');
+    $value = isset($options['post_counter_text']) ? esc_attr($options['post_counter_text']) : '';
+    echo '<input type="text" name="simple_post_counter_options[post_counter_text]" value="' . $value . '" />';
+}
